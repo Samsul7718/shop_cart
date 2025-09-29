@@ -3,17 +3,11 @@ import { useCart } from '../context/CartContext'
 import { useState } from 'react';
 
 const CartPage = () => {
-    const [qty,setQty]=useState(1)
-    const {cart}=useCart();
-    const total=cart.reduce((a,b)=>a+b.price,0);
+    // const [qty,setQty]=useState(1)
+    const {cart,incQty,decQty,remove}=useCart();
+    const total=cart.reduce((sum,item)=>sum + item.price * (item.qty || 1),0);
 
-      const incQty=()=>{
-        setQty((prev) => prev + 1);
-    }
-    const decQty=()=>{
-        if(qty==0) return
-      setQty((prev)=>prev-1)
-    }
+    
   return (
      <div className='max-w-4xl mx-auto p-5'>
         <h1 className='text-2xl font-bold mb-5'>Your Shopping Cart</h1>
@@ -38,11 +32,13 @@ const CartPage = () => {
                         <p className='text-gray-500'>{item.price}</p>
                     </div>
                 </div>
-                <div className='flex items-center gap-3'>
-                    <button onClick={()=>decQty()}>-</button>
-                    <span>{qty}</span>
-                    <button onClick={()=>incQty()}>+</button>
-                    <button>remove</button>
+                <div
+        
+                className='flex items-center gap-3'>
+                    <button onClick={()=>decQty(item.id)}>-</button>
+                    <span>{item.qty}</span>
+                    <button onClick={()=>incQty(item.id)}>+</button>
+                    <button onClick={()=>remove(item.id)}>remove</button>
                 </div>
             </div>
                ))}

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useCart } from '../context/CartContext'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const ProductPage = () => {
     const [products,setProducts]=useState([])
@@ -21,8 +22,16 @@ const ProductPage = () => {
         navigate('/cart')
   }
   return (
-    <div className='p-4'>
-         <h2 className="text-2xl mb-4 font-bold ">Product Page</h2>
+    <div className=' p-4'>
+        <div className='flex justify-between items-center gap-100'>
+            <div className="flex-1"></div>
+           <h2 className="text-2xl mb-4 font-bold ">Product Page</h2>
+           <Link to="/cart">
+           <button className='bg-sky-400 text-white p-4 m-4'>Go to Cart</button>
+           </Link>
+         
+        </div>
+         
          <ul className='space-y-4'>
             {products.map((product)=>(
                 <li 
