@@ -1,24 +1,21 @@
-
-import { useEffect } from 'react'
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+// import { useEffect } from 'react'
 import './App.css'
+import ProductPage from './component/ProductPage'
+import CartPage from './component/CartPage'
 
 function App() {
-  const getUser=()=>{
-    fetch("http://localhost:3000/api/product")
-    .then(res=>res.json())
-    .then(json=>console.log(json))
-  }
-
-  useEffect(()=>{
-    getUser()
-  },[])
+ 
 
   return (
-    <>
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-    </>
+    <div className='App'>
+    <Router>
+      <Routes>
+        <Route path='/' element={<ProductPage/>}/>
+        <Route path='/cart' element={<CartPage/>}/>
+      </Routes>
+    </Router>
+    </div>
   )
 }
 
