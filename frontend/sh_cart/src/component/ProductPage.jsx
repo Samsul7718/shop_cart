@@ -14,12 +14,12 @@ const ProductPage = () => {
     <div className='p-4'>
          <h2 className="mb-4 font-bold ">Product Page</h2>
          <ul className='space-y-4'>
-            {products.map((product)=>{
+            {products.map((product)=>(
                 <li 
                 key={product.id}
                 className="flex items-center gap-4 border p-2 rounded"
                 >
-                    <img src={product.image} alt="productImg loading..." width="100" 
+                    <img src={product.imageUrl} alt="" width="100" 
                     className="object-cover"/>
                     <div className="flex-1">
                     <h3 className="font-medium">{product.name}</h3>
@@ -31,7 +31,7 @@ const ProductPage = () => {
                      Place Order
                   </button>
                 </li>
-            })}
+            ))}
          </ul>
     </div>
   )
