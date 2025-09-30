@@ -23,7 +23,7 @@ const ProductPage = () => {
   }
   return (
     <div className=' p-4'>
-        <div className='flex justify-between items-center gap-100'>
+        <div className='flex justify-between items-center gap-100 md:gap-70'>
             <div className="flex-1"></div>
            <h2 className="text-2xl mb-4 font-bold ">Product Page</h2>
            <Link to="/cart">
